@@ -1,1 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arushi's Birthday Special ❤️</title>
 
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+ background:#080808;color:white;
+ font-family:Arial,sans-serif;
+ text-align:center;
+ overflow-x:hidden;
+}
+header{
+ padding:25px 10px;color:#e50914;
+ font-size:27px;font-weight:bold;
+ letter-spacing:3px;
+}
+section{padding:35px 18px;min-height:80vh}
+h1{font-size:32px;margin:25px 0;color:#fff}
+h2{color:#e50914;margin:20px}
+p{line-height:1.8;color:#ddd}
+button{
+ background:#e50914;color:white;
+ border:0;padding:14px 25px;
+ border-radius:7px;font-size:16px;
+ margin:12px;cursor:pointer;
+}
+input{
+ padding:14px;border-radius:6px;
+ border:1px solid #e50914;
+ background:#171717;color:white;
+ font-size:18px;text-align:center;
+ width:220px;
+}
+.hidden{display:none}
+.card{
+ background:#181818;border-radius:12px;
+ padding:25px;margin:20px auto;
+ max-width:500px;
+ box-shadow:0 0 20px #e5091433;
+}
+.gallery{
+ display:grid;grid-template-columns:1fr 1fr;
+ gap:12px;max-width:500px;margin:auto;
+}
+.photo{
+ height:145px;background:#242424;
+ border:1px solid #e50914;
+ border-radius:10px;
+ display:flex;align-items:center;
+ justify-content:center;
+ color:#aaa;font-size:15px;
+}
+.letter{text-align:left;white-space:pre-line}
+.cake{font-size:100px;margin:25px}
+.heart{font-size:45px;animation:pulse 1s infinite}
+@keyframes pulse{
+ 50%{transform:scale(1.2)}
+}
+@keyframes glow{
+ 50%{text-shadow:0 0 25px red}
+}
+footer{padding:30px;color:#888}
+</style>
+</head>
+
+<body>
+
+<header>NETFLIX ❤️</header>
+
+<section id="welcome">
+<h1>❤️ ARUSHI ORIGINAL ❤️</h1>
+<div class="card">
+<h2>HAPPY BIRTHDAY NANU</h2>
+<p>A special story made with love, just for you.</p>
+<div class="heart">❤️</div>
+<button onclick="show('login')">WATCH SURPRISE ▶</button>
+</div>
+</section>
+
+<section id="login" class="hidden">
+<h1>Who's Watching? ❤️</h1>
+<div class="card">
+<div class="heart">🥹</div>
+<h2>ARUSHI</h2>
+<p>Enter your secret password</p><br>
+<input id="pass" type="password" placeholder="Enter password">
+<br>
+<button onclick="checkPass()">UNLOCK ❤️</button>
+<p id="error"></p>
+</div>
+</section>
+
+<section id="countdown" class="hidden">
+<h1>YOUR SURPRISE IS COMING!</h1>
+<div class="card">
+<h2 id="timer">10</h2>
+<p>Something special is waiting for you...</p>
+<button onclick="show('home')">Preview Surprise ❤️</button>
+</div>
+</section>
+
+<section id="home" class="hidden">
+<h1>HAPPY BIRTHDAY MERO MAYA ❤️</h1>
+<p>Welcome to your little world, Arushi.</p>
+<div class="card">
+<h2>OUR MEMORIES 📸</h2>
+<div class="gallery">
+<div class="photo">Memory 01 ❤️</div>
+<div class="photo">Memory 02 ❤️</div>
+<div class="photo">Memory 03 ❤️</div>
+<div class="photo">Memory 04 ❤️</div>
+<div class="photo">Memory 05 ❤️</div>
+<div class="photo">Memory 06 ❤️</div>
+</div>
+</div>
+<button onclick="show('letter')">SPECIAL SURPRISE 💌</button>
+</section>
+
+<section id="letter" class="hidden">
+<h1>A LETTER FROM GAURAV 💌</h1>
+<div class="card letter">
+<h2>To My Beautiful Arushi ❤️</h2>
+<p>
+My Nanu, My Pehelwan...
+
+You are my favourite feeling,
+my favourite notification,
+and one of the most beautiful
+parts of my life.
+
+No matter how far we are,
+you will always have a special
+place in my heart.
+
+I LOVE YOU SO MUCHHH!
+❤️🥹🫂
+
+Forever your favourite person.
+
+Your Gaurav ❤️
+</p>
+</div>
+<button onclick="show('cake')">NEXT SURPRISE 🎂</button>
+</section>
+
+<section id="cake" class="hidden">
+<h1>TIME TO CUT YOUR CAKE! 🎂</h1>
+<div class="cake" id="cakeEmoji">🎂</div>
+<p>Make a wish, my Nanu! ❤️</p>
+<button onclick="cutCake()">CUT THE CAKE ❤️</button>
+</section>
+
+<section id="final" class="hidden">
+<div class="heart">❤️</div>
+<h1 style="animation:glow 1s infinite">
+HAPPY BIRTHDAY ARUSHI!
+</h1>
+<h2>MERO MAYA 🥹❤️</h2>
+<p>GAURAV & ARUSHI</p>
+<p>OUR LITTLE WORLD 🌍♾️</p>
+</section>
+
+<footer>Made with ❤️ by Gaurav</footer>
+
+<script>
+function show(id){
+ document.querySelectorAll('section').forEach(s=>{
+  s.classList.add('hidden');
+ });
+ document.getElementById(id).classList.remove('hidden');
+ window.scrollTo(0,0);
+}
+
+function checkPass(){
+ if(document.getElementById('pass').value==='1709'){
+  show('countdown');
+  let time=10;
+  document.getElementById('timer').innerText=time;
+  let interval=setInterval(()=>{
+   time--;
+   document.getElementById('timer').innerText=time;
+   if(time<=0){
+    clearInterval(interval);
+    show('home');
+   }
+  },1000);
+ }else{
+  document.getElementById('error').innerText=
+  'Wrong password! Try again ❤️';
+ }
+}
+
+function cutCake(){
+ document.getElementById('cakeEmoji').innerText='🎉🍰🎉';
+ setTimeout(()=>show('final'),1500);
+}
+</script>
+
+</body>
+</html>

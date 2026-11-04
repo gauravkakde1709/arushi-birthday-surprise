@@ -276,9 +276,16 @@ function cutCake() {
     document.getElementById("birthdayMessage").innerHTML =
     "HAPPY BIRTHDAY ARUSHI, MERO MAYA! ❤️🎉🥹";
 }
-    <audio id="bgMusic" loop preload="auto">
-    <source src="Edd_Sheeran_-_Perfect_(mp3.pm).mp3" type="audio/mpeg">
-</audio>
+function startMusic() {
+    const music = document.getElementById("bgMusic");
+
+    if (music.paused) {
+        music.volume = 0.6;
+        music.play().catch(error => {
+            console.log("Music playback requires user interaction.");
+        });
+    }
+                            }    
 </script>
 
 </body>

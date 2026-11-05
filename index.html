@@ -281,15 +281,16 @@ function startMusic(){
  music.volume=0.6;
  music.play().catch(()=>{});
 }
-
+ 
 function checkPassword(){
  if(document.getElementById("password").value==="1709"){
   hideScreens();
-  checkBirthday();
+  document.getElementById("mainScreen").style.display="flex";
  }else{
   document.getElementById("error").innerText="Wrong PIN! Try again ❤️";
  }
-}
+ }
+
 
 const unlockDate=new Date("2026-11-09T00:00:00+05:30").getTime();
 const expiryDate=new Date("2026-11-10T00:00:00+05:30").getTime();

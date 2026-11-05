@@ -386,6 +386,45 @@ function cutCake(){
  document.getElementById("birthdayWish").innerHTML=
  "<h2>HAPPY BIRTHDAY ARUSHI MERO MAYA ❤️🎂</h2><p>I LOVE YOU SO MUCHHH! 🥹</p>";
 }
+ // NETFLIX MEMORY POSTERS
+function createMemoryPosters() {
+    const episodes = document.querySelectorAll(".episode");
+    const sections = document.querySelectorAll(".netflix-section");
+
+    if (!episodes.length || !sections.length) return;
+
+    const posterRow = document.createElement("div");
+    posterRow.className = "memory-row";
+    posterRow.id = "memoryCards";
+
+    episodes.forEach((episode, index) => {
+        const img = episode.querySelector("img");
+        const heading = episode.querySelector("h2");
+
+        if (!img) return;
+
+        const poster = document.createElement("div");
+        poster.className = "memory-poster";
+
+        poster.innerHTML = `
+            <img src="${img.getAttribute("src")}" alt="Memory ${index + 1}">
+            <h3>${heading ? heading.innerText : "Memory " + (index + 1)}</h3>
+        `;
+
+        poster.onclick = () => {
+            showEpisode(index);
+            document.getElementById("episodes").scrollIntoView({
+                behavior: "smooth"
+            });
+        };
+
+        posterRow.appendChild(poster);
+    });
+
+    sections[1].appendChild(posterRow);
+}
+
+createMemoryPosters();
 </script>
  <link rel="stylesheet" href="style.css">
 </body>

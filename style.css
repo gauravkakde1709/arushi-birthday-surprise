@@ -844,10 +844,20 @@ body {
 /* EPISODE 1 PHOTO AS HERO BACKGROUND */
 
 .netflix-hero {
+    min-height: 520px !important;
     background:
-        linear-gradient(90deg, rgba(0,0,0,.90), rgba(0,0,0,.35)),
-        linear-gradient(0deg, #080808, transparent 60%),
-        url("1793848011971.png") center 35% / cover no-repeat !important;
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,0.88) 0%,
+            rgba(0,0,0,0.55) 50%,
+            rgba(0,0,0,0.15) 100%
+        ),
+        linear-gradient(
+            0deg,
+            #080808 0%,
+            transparent 45%
+        ),
+        url("1793849030420.png") center 35% / cover no-repeat !important;
 }
 
 @media(max-width:600px) {

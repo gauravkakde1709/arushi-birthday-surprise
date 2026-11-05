@@ -3,290 +3,350 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> GAURAV'S LITTLE SURPRISE❤️</title>
-<link rel="stylesheet" href="style.css">
+<title>GAURAV'S LITTLE SURPRISE ❤️</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+ background:#080808;color:white;
+ font-family:Arial,sans-serif;
+ min-height:100vh;
+}
+.screen{display:none;min-height:100vh;padding:25px}
+.active{display:flex}
+.center{
+ align-items:center;justify-content:center;
+ flex-direction:column;text-align:center;
+}
+.logo{
+ color:#e50914;font-size:28px;font-weight:900;
+ letter-spacing:3px;margin-bottom:35px;
+}
+h1{font-size:32px;margin-bottom:20px}
+button{
+ background:#e50914;color:white;border:0;
+ padding:13px 25px;border-radius:6px;
+ font-size:16px;font-weight:bold;cursor:pointer;
+ margin:10px;
+}
+button:hover{background:#b20710}
+input{
+ background:#222;border:1px solid #555;
+ color:white;padding:15px;border-radius:6px;
+ font-size:20px;text-align:center;
+ width:210px;margin:20px;
+}
+.profile{
+ width:125px;height:125px;border-radius:12px;
+ background:#292929;border:3px solid transparent;
+ display:flex;align-items:center;justify-content:center;
+ font-size:55px;margin:20px;cursor:pointer;
+}
+.profile:hover{border-color:white}
+.muted{color:#aaa}
+#countdown{
+ font-size:25px;color:#e50914;
+ margin:25px 0;font-weight:bold;
+}
+.hero{
+ background:linear-gradient(90deg,#080808,#25050c,#080808);
+ min-height:65vh;padding:50px 25px;
+ display:flex;flex-direction:column;
+ justify-content:center;
+}
+.hero h1{font-size:42px;color:#ffccd5}
+.episode{
+ display:none;padding:25px;
+ max-width:900px;margin:auto;
+}
+.episode.activeEpisode{display:block}
+.episode img{
+ width:100%;max-height:430px;
+ object-fit:contain;border-radius:14px;
+ background:#171717;
+}
+.episode h2{
+ color:#ff526d;margin:20px 0;
+}
+.message{
+ white-space:pre-wrap;
+ line-height:1.8;font-size:16px;
+ color:#eee;margin:20px 0;
+}
+.nav{display:flex;justify-content:center;flex-wrap:wrap}
+.card{
+ background:#171717;border-radius:15px;
+ padding:25px;margin:20px auto;
+ max-width:850px;
+}
+#letterModal{
+ display:none;position:fixed;inset:0;
+ background:#000e;z-index:10;
+ align-items:center;justify-content:center;
+ padding:20px;
+}
+.letter{
+ background:#f8e9d4;color:#442b20;
+ padding:30px;border-radius:8px;
+ max-width:600px;max-height:85vh;
+ overflow:auto;line-height:1.8;
+}
+#cake{font-size:90px;margin:20px}
+footer{text-align:center;color:#888;padding:30px}
+@media(max-width:600px){
+ h1{font-size:26px}
+ .hero h1{font-size:32px}
+ .message{font-size:15px}
+}
+</style>
 </head>
+
 <body>
+
 <audio id="bgMusic" loop preload="auto">
-    <source src="Edd_Sheeran_-_Perfect_(mp3.pm).mp3" type="audio/mpeg">
+<source src="Edd_Sheeran_-_Perfect_(mp3.pm).mp3" type="audio/mpeg">
 </audio>
-<!-- WHO'S WATCHING SCREEN -->
-<section id="profileScreen" class="password-screen">
-    <div class="password-box">
-        <div class="logo">GAURAV'S LITTLE SURPRISE</div>
 
-        <h1>Who's Watching?</h1>
-        <p>Choose your profile, my love ❤️</p>
-
-        <div onclick="openPassword()" style="cursor:pointer;margin:30px auto;">
-            <div style="
-                width:120px;height:120px;
-                margin:auto;
-                border-radius:15px;
-                background:linear-gradient(135deg,#e50914,#6b102b);
-                display:flex;align-items:center;
-                justify-content:center;
-                font-size:55px;
-                box-shadow:0 0 35px rgba(229,9,20,.4);
-            ">❤️</div>
-            <h2 style="margin-top:15px;">ARUSHI</h2>
-            <p style="margin-top:5px;">My Nanu, My Maya 🥹</p>
-        </div>
-
-        <p style="font-size:12px;">Only one special person belongs here. ❤️</p>
-    </div>
+<!-- PROFILE -->
+<section id="profileScreen" class="screen active center">
+<div class="logo">THE AVION PRESENTS</div>
+<h1>Who's Watching?</h1>
+<div class="profile" onclick="openPassword()">❤️</div>
+<h2>ARUSHI</h2>
+<p class="muted">My Favourite Person 🧿</p>
 </section>
 
-<!-- PASSWORD SCREEN -->
-<section id="passwordScreen" class="password-screen hidden">
-    <div class="password-box">
-        <div class="logo">GAURAV'S LITTLE SURPRISE</div>
-        <h1>Welcome Back, My Love ❤️</h1>
-        <p>This little world is made only for you.</p>
-
-        <input type="password" id="password"
-        class="password-input" placeholder="Enter PIN"
-        maxlength="4" inputmode="numeric">
-
-        <button class="primary-btn" onclick="checkPassword()">
-            ENTER MY WORLD ❤️
-        </button>
-
-        <p id="error" style="color:#ff4d79;margin-top:15px;"></p>
-    </div>
+<!-- PASSWORD -->
+<section id="passwordScreen" class="screen center">
+<div class="logo">LOVEFLIX ❤️</div>
+<h1>Welcome Back, Nanu!</h1>
+<p>Enter your secret PIN</p>
+<input id="password" type="password" maxlength="4" placeholder="••••">
+<button onclick="checkPassword()">UNLOCK ❤️</button>
+<p id="error" style="color:red"></p>
 </section>
 
-<!-- COUNTDOWN SCREEN -->
-<section id="countdownScreen" class="countdown-screen hidden">
-    <div class="countdown-content">
-        <div class="logo">GAURAV'S LITTLE SURPRISE</div>
-        <h1>Something Beautiful Is Waiting...</h1>
-        <p>Your birthday surprise is getting ready, my Nanu. ❤️</p>
-
-        <div class="countdown">
-            <div class="time-box"><span id="days">00</span><small>DAYS</small></div>
-            <div class="time-box"><span id="hours">00</span><small>HOURS</small></div>
-            <div class="time-box"><span id="minutes">00</span><small>MINUTES</small></div>
-            <div class="time-box"><span id="seconds">00</span><small>SECONDS</small></div>
-        </div>
-    </div>
+<!-- COUNTDOWN -->
+<section id="countdownScreen" class="screen center">
+<div class="logo">GAURAV'S LITTLE SURPRISE ❤️</div>
+<h1>Something Special Is Waiting...</h1>
+<p>For the most beautiful girl in my life 🥹</p>
+<div id="countdown">Loading...</div>
+<p class="muted">Your special day is almost here ❤️</p>
 </section>
 
-<!-- MAIN WEBSITE -->
-<section id="mainScreen" class="main-screen hidden">
+<!-- MAIN -->
+<section id="mainScreen" class="screen" style="display:none;flex-direction:column;padding:0">
 
-    <nav class="navbar">
-        <div class="nav-logo">GAURAV'S LITTLE SURPRISE</div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#memories">Memories</a>
-            <a href="#letter">My Letter</a>
-        </div>
-    </nav>
+<div class="hero">
+<div class="logo">LOVEFLIX ❤️</div>
+<h1>Happy Birthday,<br>My Beautiful Arushi ❤️</h1>
+<p style="line-height:2;color:#ddd">
+One girl. Six memories. Infinite reasons to love you.
+</p>
+<button onclick="showEpisode(0)">START SURPRISE ❤️</button>
+</div>
 
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="hero-tag">A LOVE STORY • EXCLUSIVE FOR ARUSHI</div>
+<div class="card">
+<h2>Our Beautiful Memories 🥹</h2>
+<p class="muted">Every picture has a story. Every story has you.</p>
+</div>
 
-            <h1>MY WORLD<br><span>MY NANU ❤️</span></h1>
+<div id="episodes">
 
-            <p class="hero-description">
-                Out of all the beautiful stories in this world,
-                my favourite one will always be ours.
-                Happy Birthday, my Maya. 🥹❤️
-            </p>
+<div class="episode">
+<img src="1793848011971.png" alt="Our first memory">
+<h2>FIRST PHOTO ❤️</h2>
+<div class="message">Small Birthday Surprise from   
+The (GOAT) GREATEST OF ALL TIME   
+Apka Gaurav kesa bhi hu pr hu😎  
+Sabse pehele bohot mehnat lagi hai babyyyyyy ye banane me 😭  
+Happiest Birthday My love 😘   
+Yaad hai ye first photo jo mene public me dalke dhamaka felaya tha 🥰 sb ko officially bata diya tha ki ap mere ho toh vapas bata de raha hu ap mere hi ho or mere hi rahoge ❤️ apne ko vapas ghumne jana hai narmada pr gurudwara sb dekhne ese hi kas ke pakad ke rakhna meko hamesha 🥺 kidhar hi mat janedena   
+I LOVE YOU SOOOOO MUCHHH PEHELWANNNNN 😘😘   
+HAPPY BIRTHDAY MERI PEHELWAN ❤️❤️</div>
+</div>
 
-            <div class="hero-buttons">
-                <button class="hero-btn play-btn"
-                onclick="document.getElementById('memories').scrollIntoView()">
-                    ▶ PLAY OUR STORY
-                </button>
+<div class="episode">
+<img src="1793848016287.jpg" alt="Nanu">
+<h2>NANU ❤️</h2>
+<div class="message">Nanuuuuuuuuuuu ❤️ 
+Meri jaaaaannnnnn 💋 
+Yaaad hai wahase ghum ke aane ke baad wali photo hai ye merko pose dene nhi aa rahe the 😭😭😭😭 babu i miss you sooooo muchhh jaldi hi Milne aaunga ese hi hug krunga vapas or apne maje toh chalte hi hai 😂 I wish ki me udar hota apke sath apke bday ko 🥺 babe I love you  sooooo muchhh I miss you 😭</div>
+</div>
 
-                <button class="hero-btn info-btn"
-                onclick="openLetter()">
-                    ℹ MORE INFO
-                </button>
-            </div>
-        </div>
-    </section>
+<div class="episode">
+<img src="1793849030420.png" alt="My sweet dish">
+<h2>My Sweet dishhhhhh</h2>
+<div class="message">I miss your hug babyyy 🥺 
+Meko Aaj bhi yaad hai me kitna nervous tha apko samne dekhne ke baad or hug krte time ka toh pata hai me fattu hu 😭 but sabse pehele mene hi Kiya tha 😎
+Ese hi bohot sare photos khichenge vapas 😁 iss bar meko jada photos nhi mile pr thik h 💗 Dekho Diwali ho yaa holi ho kuch bhi meko pata hai Diwali ho gai but ap hi sundar lag rahe the 😘😘😘😘
+Babe you are the besttttttttt 🤌🤌🤌🤌🤌 
+Happy Birthday Meri sweet dish 💗🤌🧿</div>
+</div>
 
-    <section class="content-section" id="memories">
-        <h2 class="section-title">Our Love Story ❤️</h2>
+<div class="episode">
+<img src="Screenshot_2026-11-05-08-29-35-06_1c337646f29875672b5a61192b9010f9.jpg" alt="The walk">
+<h2>The walk</h2>
+<div class="message">Ye yaad hai 🥰 apan mall gaye the udhar se aa rahe the vapas fir apko wo chocolate ka cake khana tha kuch toh yaadddddd haiiiiii meko yaad hai sb nanu ese hi haath pakad ke zindagi bhar mere sath chalna 🥺 meri bohot sari buri adato mese apne meko bahar nikala hai or uske liye thank youuu sooo much nanu ❤️ 
+Abhi next year kitne saal hoge wo ginte nhi hai kitne bhi hone do apne ko ky 😂 
+Bass itna bolna hai Mene toh haath thamb liya hai bass budhe hone tak mere sath rehna buddhe hone ke baad meko yaad hai apne dono ko hi nani ji ke ghr shift hona hai udhar dono hi rahenge khush rahenge 
+Hamesha mere saath rehna chahoge..??
+Bohot buri adate hai meko pr ap thik kr sakte ho meko 🥰🥰 
+Happy birthday meri kumbhkaran 🥳🤌</div>
+</div>
 
-        <div class="card-row">
-            <div class="love-card">
-                <h3>Our Beginning 🦋</h3>
-                <p>Every story has a beginning.</p>
-            </div>
+<div class="episode">
+<img src="Screenshot_2026-11-05-08-30-05-50_1c337646f29875672b5a61192b9010f9.jpg" alt="Kidhar hai">
+<h2>Kidhar hai ...??</h2>
+<div class="message">Ye photo se yaad aaya wo bracelet kidharrr haiiiii .....? 🤨🤨🤨 Bohot din ho gye dikha nhi me kitna pagallll huuuuu romentic isme hagna adat hai meriiii 
+Pr tension nhi mere pass ap ho 🥰 sikha Dena sb meko 🥰 mall meko photo 🤌 yaad aa rhi hai yrr apki ky kruuuuuuu aa jau milne 😭😭😭😭 ye 5th ep hai na abhi thoda achi baat krte hai hehehehe 
+2 min ruko achi baat se pehele wo pimple ka kuch kro wo neem ka lagana band kro 
+Hn sorry ho jata hai galti se 
+Nanu ❤️ 
+Happy Birthday My love 💕 
+Hamesha khush rehena haste rehna or bhagwan ji ye ladki pr koi musibat mat aane dena kuch hoga toh meko dedo or meri upar ki khushiya bhi ye meri moti ko dedo khadus hai thodi pr meri hai plzz 🙏🙏 nanu ese hi rehna jese bhi ho perfect ho ap 🥰 
+I love you moti 💗🧿</div>
+</div>
 
-            <div class="love-card">
-                <h3>My Favourite Person ❤️</h3>
-                <p>It's always you.</p>
-            </div>
+<div class="episode">
+<img src="Screenshot_2026-11-05-08-31-08-33_1c337646f29875672b5a61192b9010f9.jpg" alt="Thank you">
+<h2>Thank you</h2>
+<div class="message">Babu 💗🧿 
+Happy birthday to you sooooo muchhh nanudaaaaa 🥰 
+Thank you for coming in my life 🧿🥰
+ ap mere zindagi me aaye or meri zindagi sukhi ho gai yr me bohot alag tha apne meko bohot acha bana diya hai thank you sb chizoo ke liyeeeeeee apke gift apke flowers mere bday ko jese kiya tha wese toh nhi kr paya me ye thodasa kiya jisse apke face pr khushi dekh saku 🥺 khush raho yrr hamesha I miss you so much Babu 💗 jaldi hi aaunga apse Milne tab cake cut krenge distance ki vajh se nhi jamta nhi toh abhi turant bhi aa jata apke ghr cake leke 🥺 i miss you meri jaan 🥺 
+I love you sooooo muchhh pehelwannnnn 😘 
+Happiest Birthday Meri pyaari chotisi bacchi ❤️🥰🧿</div>
+</div>
 
-            <div class="love-card">
-                <h3>Our Little World 🌍</h3>
-                <p>Just you and me.</p>
-            </div>
+</div>
 
-            <div class="love-card">
-                <h3>Forever & Always ♾️</h3>
-                <p>My favourite forever.</p>
-            </div>
-        </div>
-    </section>
+<div class="nav">
+<button onclick="previousEpisode()">← PREVIOUS</button>
+<button onclick="nextEpisode()">NEXT →</button>
+</div>
 
-    <section class="content-section">
-        <h2 class="section-title">Made With Love For You 💗</h2>
+<div class="card" style="text-align:center">
+<h2>A Letter For You 💌</h2>
+<p>Some words from my heart...</p>
+<button onclick="openLetter()">OPEN MY LETTER</button>
+</div>
 
-        <div class="card-row">
-            <div class="love-card">
-                <h3>A Letter For You 💌</h3>
-                <p>Words straight from my heart.</p>
-            </div>
+<div class="card center">
+<h2>One Last Surprise 🎂</h2>
+<div id="cake">🎂</div>
+<button onclick="cutCake()">CUT THE CAKE ❤️</button>
+<p id="birthdayWish"></p>
+</div>
 
-            <div class="love-card">
-                <h3>Birthday Special 🎂</h3>
-                <p>Your special day.</p>
-            </div>
-
-            <div class="love-card">
-                <h3>My Beautiful Arushi 🌹</h3>
-                <p>You are one of a kind.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="letter-section" id="letter">
-        <h2>To My Beautiful Arushi</h2>
-        <p>
-            Some feelings are too beautiful to fit into ordinary words.
-            So I made this little world just for you. ❤️
-        </p>
-
-        <button class="letter-btn" onclick="openLetter()">
-            OPEN YOUR SPECIAL LETTER 💌
-        </button>
-    </section>
-
-    <section class="cake-section">
-        <h2>One Last Surprise, My Maya ❤️</h2>
-        <div class="cake">🎂</div>
-        <button class="cake-btn" onclick="cutCake()">
-            🎀 CUT THE CAKE
-        </button>
-        <h2 id="birthdayMessage" style="margin-top:25px;"></h2>
-    </section>
-
-    <footer>
-        MADE WITH <span>❤️</span> BY GAURAV<br>
-        GAURAV & ARUSHI — OUR LITTLE WORLD ♾️
-    </footer>
+<footer>Made with infinite love by Gaurav ❤️</footer>
 </section>
 
-<!-- LETTER MODAL -->
-<div id="letterModal" class="modal hidden">
-    <div class="modal-content">
-        <h2>My Beautiful Arushi ❤️</h2>
-        <p>
-            My Nanu, this little world belongs only to you.
-            There are so many things I want to tell you,
-            so many memories I want to make with you,
-            and so much love I want to give you.
-
-            You are my favourite person, my happiness,
-            and one of the most beautiful parts of my life.
-
-            I LOVE YOU SOOOOOOO MUCHHHH, MERI JAAN! ❤️🥹
-
-            Forever yours,
-            Gaurav ❤️
-        </p>
-        <button class="close-btn" onclick="closeLetter()">CLOSE ❤️</button>
-    </div>
+<div id="letterModal">
+<div class="letter">
+<h2>To My Beautiful Arushi ❤️</h2>
+<br>
+<p>Happy Birthday, Mero Maya! ❤️</p>
+<br>
+<p>Thank you for coming into my life and making it beautiful. I miss you so much, meri jaan. Distance may keep us apart today, but my heart is always with you.</p>
+<br>
+<p>Apni baat kaam ho gai iska matlab ye bhi nahi hai ki me apko bhul gaya hu.</p>
+<br>
+<h3>I LOVE YOU SOOOOO MUCHHH! ❤️🥹🧿</h3>
+<br>
+<button onclick="closeLetter()">CLOSE ❤️</button>
+</div>
 </div>
 
 <script>
-function openPassword() {
-    document.getElementById("profileScreen").classList.add("hidden");
-    document.getElementById("passwordScreen").classList.remove("hidden");
+let currentEpisode=0;
 
-    startMusic();
+function hideScreens(){
+ document.querySelectorAll(".screen").forEach(s=>{
+  s.classList.remove("active");
+  s.style.display="none";
+ });
 }
 
-function checkPassword() {
-    const pin = document.getElementById("password").value;
-
-    if (pin === "1709") {
-        document.getElementById("passwordScreen").classList.add("hidden");
-        checkBirthday();
-    } else {
-        document.getElementById("error").innerText =
-        "Wrong PIN, my love. Try again ❤️";
-    }
+function openPassword(){
+ hideScreens();
+ document.getElementById("passwordScreen").style.display="flex";
+ document.getElementById("passwordScreen").classList.add("active");
+ startMusic();
 }
 
-const unlockDate = new Date("2026-11-09T00:00:00+05:30").getTime();
-
-function checkBirthday() {
-    const now = Date.now();
-
-    if (now >= unlockDate) {
-        document.getElementById("mainScreen").classList.remove("hidden");
-    } else {
-        document.getElementById("countdownScreen").classList.remove("hidden");
-        updateCountdown();
-    }
+function startMusic(){
+ const music=document.getElementById("bgMusic");
+ music.volume=0.6;
+ music.play().catch(()=>{});
 }
 
-function updateCountdown() {
-    const now = Date.now();
-    let distance = unlockDate - now;
-
-    if (distance <= 0) {
-        document.getElementById("countdownScreen").classList.add("hidden");
-        document.getElementById("mainScreen").classList.remove("hidden");
-        return;
-    }
-
-    document.getElementById("days").innerText =
-    Math.floor(distance / (1000 * 60 * 60 * 24));
-
-    document.getElementById("hours").innerText =
-    Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-    document.getElementById("minutes").innerText =
-    Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-    document.getElementById("seconds").innerText =
-    Math.floor((distance % (1000 * 60)) / 1000);
-
-    setTimeout(updateCountdown, 1000);
+function checkPassword(){
+ if(document.getElementById("password").value==="1709"){
+  hideScreens();
+  checkBirthday();
+ }else{
+  document.getElementById("error").innerText="Wrong PIN! Try again ❤️";
+ }
 }
 
-function openLetter() {
-    document.getElementById("letterModal").classList.remove("hidden");
+const unlockDate=new Date("2026-11-09T00:00:00+05:30").getTime();
+const expiryDate=new Date("2026-11-10T00:00:00+05:30").getTime();
+
+function checkBirthday(){
+ const now=Date.now();
+ if(now>=expiryDate){
+  document.getElementById("countdownScreen").style.display="flex";
+  document.getElementById("countdownScreen").innerHTML="<h1>Our little surprise has ended ❤️</h1>";
+ }else if(now>=unlockDate){
+  document.getElementById("mainScreen").style.display="flex";
+ }else{
+  document.getElementById("countdownScreen").style.display="flex";
+  updateCountdown();
+ }
 }
 
-function closeLetter() {
-    document.getElementById("letterModal").classList.add("hidden");
+function updateCountdown(){
+ const now=Date.now();
+ const distance=unlockDate-now;
+ if(distance<=0){checkBirthday();return;}
+ const days=Math.floor(distance/(1000*60*60*24));
+ const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+ const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+ const seconds=Math.floor((distance%(1000*60))/1000);
+ document.getElementById("countdown").innerText=
+ days+" Days "+hours+" Hours "+minutes+" Minutes "+seconds+" Seconds";
 }
+setInterval(()=>{
+ if(Date.now()<unlockDate)updateCountdown();
+},1000);
 
-function cutCake() {
-    document.getElementById("birthdayMessage").innerHTML =
-    "HAPPY BIRTHDAY ARUSHI, MERO MAYA! ❤️🎉🥹";
+function showEpisode(n){
+ currentEpisode=n;
+ document.querySelectorAll(".episode").forEach((e,i)=>{
+  e.classList.toggle("activeEpisode",i===n);
+ });
+ document.getElementById("episodes").scrollIntoView({behavior:"smooth"});
 }
-function startMusic() {
-    const music = document.getElementById("bgMusic");
-
-    if (music.paused) {
-        music.volume = 0.6;
-        music.play().catch(error => {
-            console.log("Music playback requires user interaction.");
-        });
-    }
-                            }    
+function nextEpisode(){
+ if(currentEpisode<5)showEpisode(currentEpisode+1);
+ else document.getElementById("letterModal").style.display="flex";
+}
+function previousEpisode(){
+ if(currentEpisode>0)showEpisode(currentEpisode-1);
+}
+function openLetter(){
+ document.getElementById("letterModal").style.display="flex";
+}
+function closeLetter(){
+ document.getElementById("letterModal").style.display="none";
+}
+function cutCake(){
+ document.getElementById("cake").innerText="🍰";
+ document.getElementById("birthdayWish").innerHTML=
+ "<h2>HAPPY BIRTHDAY ARUSHI MERO MAYA ❤️🎂</h2><p>I LOVE YOU SO MUCHHH! 🥹</p>";
+}
 </script>
-
 </body>
- </html>
+    </html>

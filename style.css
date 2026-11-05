@@ -798,3 +798,65 @@ body {
         font-size: 14px;
     }
 }
+/* NETFLIX MEMORY POSTERS */
+
+.memory-row {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 20px 5px 30px;
+    scroll-behavior: smooth;
+}
+
+.memory-poster {
+    flex: 0 0 180px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.memory-poster:hover {
+    transform: scale(1.08);
+}
+
+.memory-poster img {
+    width: 180px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #222;
+}
+
+.memory-poster h3 {
+    color: white;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.memory-row::-webkit-scrollbar {
+    height: 5px;
+}
+
+.memory-row::-webkit-scrollbar-thumb {
+    background: #e50914;
+    border-radius: 10px;
+}
+
+/* EPISODE 1 PHOTO AS HERO BACKGROUND */
+
+.netflix-hero {
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.90), rgba(0,0,0,.35)),
+        linear-gradient(0deg, #080808, transparent 60%),
+        url("1793848011971.png") center 35% / cover no-repeat !important;
+}
+
+@media(max-width:600px) {
+    .memory-poster {
+        flex: 0 0 145px;
+    }
+
+    .memory-poster img {
+        width: 145px;
+        height: 205px;
+    }
+}

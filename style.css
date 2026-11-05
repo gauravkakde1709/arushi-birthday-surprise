@@ -625,3 +625,46 @@ button:active {
 h1, h2, h3 {
     color: #fff;
 }
+/* PREMIUM NETFLIX MEMORY LAYOUT */
+.episode.activeEpisode {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 25px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 25px;
+    background: #151515;
+    border: 1px solid #333;
+    border-radius: 18px;
+}
+
+.episode img {
+    width: 100%;
+    max-height: 450px;
+    object-fit: contain;
+    border-radius: 14px;
+}
+
+.episode h2,
+.episode p {
+    text-align: left;
+    line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+    .episode.activeEpisode {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .episode img {
+        max-height: 350px;
+    }
+
+    .episode h2,
+    .episode p {
+        text-align: center;
+    }
+}

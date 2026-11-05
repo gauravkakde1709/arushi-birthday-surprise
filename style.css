@@ -552,3 +552,76 @@ footer span {
         font-size: 25px;
     }
     }
+/* PREMIUM ROMANTIC UPGRADE */
+
+body {
+    background: #080808 !important;
+    color: #fff;
+    font-family: 'DM Sans', Arial, sans-serif !important;
+}
+
+.screen {
+    background: radial-gradient(ellipse at top, #25000d 0%, #080808 65%) !important;
+}
+
+.center {
+    text-align: center;
+}
+
+.logo {
+    color: #e50914 !important;
+    letter-spacing: 5px;
+    font-weight: 900;
+}
+
+.profile {
+    background: linear-gradient(145deg, #1b1b1b, #080808);
+    border: 1px solid #b3123b;
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 0 35px #e5091433;
+}
+
+.hero {
+    background: linear-gradient(135deg, #26000d, #080808);
+    border: 1px solid #5c1028;
+    border-radius: 20px;
+    padding: 35px 20px;
+    text-align: center;
+}
+
+.episode {
+    background: #151515;
+    border: 1px solid #55152b;
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 0 10px 35px #000;
+}
+
+.episode img {
+    border-radius: 14px;
+    box-shadow: 0 0 20px #e5091433;
+}
+
+button {
+    background: linear-gradient(135deg, #e50914, #8b001b);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(.96);
+}
+
+.message, .letter {
+    line-height: 1.8;
+    color: #f5dfe5;
+}
+
+h1, h2, h3 {
+    color: #fff;
+}

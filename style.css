@@ -1209,3 +1209,18 @@ text-align: left !important;
         min-height: 85vh;
     }
 }
+/* BALLOONS VISIBILITY FIX */
+#balloonContainer {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    overflow: visible !important;
+    pointer-events: none !important;
+    z-index: 99999 !important;
+}
+
+#balloonContainer > div {
+    position: absolute !important;
+    display: block !important;
+}

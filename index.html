@@ -339,16 +339,56 @@ Happiest Birthday Meri pyaari chotisi bacchi ❤️🥰🧿</div>
 <button onclick="openLetter()">OPEN MY LETTER</button>
 </div>
 
-<div class="card center">
-<h2>One Last Surprise 🎂</h2>
-<div id="cake">🎂</div>
-<button onclick="cutCake()">CUT THE CAKE ❤️</button>
-<p id="birthdayWish"></p>
+<div class="card center cake-card">
+    <h2>One Last Surprise 🎂</h2>
+
+    <div id="cakePreview" onclick="openCake()">
+        🎂
+    </div>
+
+    <p class="muted">Tap to reveal your birthday cake ❤️</p>
 </div>
 
 <footer>Made with infinite love by Gaurav ❤️</footer>
 </section>
 
+ <!-- 3D BIRTHDAY CAKE POPUP -->
+<div id="cakeModal">
+
+    <div class="cake-popup">
+
+        <h1>HAPPY BIRTHDAY ❤️</h1>
+        <p>Make a wish, my beautiful girl! 🥹</p>
+
+        <div class="cake-stage">
+
+            <div id="cake3d">
+
+                <div class="cake-candle">
+                    <div class="flame"></div>
+                </div>
+
+                <div class="cake-top"></div>
+                <div class="cake-middle"></div>
+                <div class="cake-bottom"></div>
+
+            </div>
+
+        </div>
+
+        <p class="cake-hint">☝️ Drag to rotate your cake</p>
+
+        <button onclick="cutCake()">CUT THE CAKE 🎂</button>
+
+        <p id="birthdayWish"></p>
+
+        <div id="balloonContainer"></div>
+
+        <button onclick="closeCake()">CLOSE ❤️</button>
+
+    </div>
+
+</div>
 <div id="letterModal">
 
 <div class="letter">

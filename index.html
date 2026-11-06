@@ -515,11 +515,124 @@ function closeLetter(){
  document.getElementById("letterModal").style.display="none";
  document.body.style.overflow="auto";
 }
-function cutCake(){
- document.getElementById("cake").innerText="🍰";
- document.getElementById("birthdayWish").innerHTML=
- "<h2>HAPPY BIRTHDAY ARUSHI MERO MAYA ❤️🎂</h2><p>I LOVE YOU SO MUCHHH! 🥹</p>";
+// ===== BIRTHDAY CAKE EXPERIENCE =====
+
+function openCake() {
+    const modal = document.getElementById("cakeModal");
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
 }
+
+function closeCake() {
+    document.getElementById("cakeModal").style.display = "none";
+    document.body.style.overflow = "auto";
+}
+
+// 360 DEGREE CAKE ROTATION
+const cake3d = document.getElementById("cake3d");
+
+let isDragging = false;
+let startX = 0;
+let startY = 0;
+let rotateY = 0;
+let rotateX = -12;
+
+function updateCakeRotation() {
+    const scale = window.innerWidth <= 600 ? 0.85 : 1;
+
+    cake3d.style.transform =
+        `scale(${scale}) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+}
+
+cake3d.addEventListener("pointerdown", (e) => {
+    isDragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    cake3d.setPointerCapture(e.pointerId);
+});
+
+cake3d.addEventListener("pointermove", (e) => {
+    if (!isDragging) return;
+
+    rotateY += (e.clientX - startX) * 0.8;
+    rotateX -= (e.clientY - startY) * 0.5;
+
+    rotateX = Math.max(-60, Math.min(60, rotateX));
+
+    startX = e.clientX;
+    startY = e.clientY;
+
+    updateCakeRotation();
+});
+
+cake3d.addEventListener("pointerup", () => {
+    isDragging = false;
+});
+
+cake3d.addEventListener("pointercancel", () => {
+    isDragging = false;
+});
+
+// CAKE CUT + BALLOONS
+function cutCake() {
+
+    const cake = document.getElementById("cake3d");
+    const wish = document.getElementById("birthdayWish");
+    const flame = document.querySelector(".flame");
+    const container = document.getElementById("balloonContainer");
+    const button = document.querySelector(
+        ".cake-popup button[onclick='cutCake()']"
+    );
+
+    if (button.disabled) return;
+
+    button.disabled = true;
+    button.innerText = "HAPPY BIRTHDAY ❤️";
+
+    if (flame) flame.style.display = "none";
+
+    cake.animate([
+        { transform: cake.style.transform, opacity: 1 },
+        { transform: "scale(0.9) rotateX(-25deg) rotateY(20deg)", opacity: 0.7 },
+        { transform: "scale(1.05) rotateX(-12deg) rotateY(0deg)", opacity: 1 }
+    ], {
+        duration: 1000,
+        easing: "ease-in-out"
+    });
+
+    wish.innerHTML = `
+        <h2 style="color:#ff3155">
+        HAPPY BIRTHDAY ARUSHI MERO MAYA ❤️🎂
+        </h2>
+        <p>I LOVE YOU SO MUCHHH! 🥹</p>
+    `;
+
+    // BALLOON CELEBRATION
+    const balloons = ["🎈", "🎈", "🎈", "❤️", "🎈", "🎈"];
+
+    balloons.forEach((emoji, index) => {
+        const balloon = document.createElement("div");
+
+        balloon.innerText = emoji;
+
+        balloon.style.position = "absolute";
+        balloon.style.left = (8 + index * 15) + "%";
+        balloon.style.bottom = "-70px";
+        balloon.style.fontSize = "38px";
+
+        container.appendChild(balloon);
+
+        balloon.animate([
+            { transform: "translateY(0) rotate(0deg)", opacity: 1 },
+            { transform: `translateY(-${window.innerHeight + 150}px) rotate(${index % 2 ? 25 : -25}deg)`, opacity: 0 }
+        ], {
+            duration: 4000 + index * 300,
+            easing: "ease-out"
+        });
+
+        setTimeout(() => balloon.remove(), 5500);
+    });
+ }
  // NETFLIX MEMORY POSTERS
 function createMemoryPosters() {
     const episodes = document.querySelectorAll(".episode");

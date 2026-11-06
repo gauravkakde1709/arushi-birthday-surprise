@@ -1224,3 +1224,58 @@ text-align: left !important;
     position: absolute !important;
     display: block !important;
 }
+
+/* ===== FINAL THANK YOU SCREEN ===== */
+
+#thankYouScreen {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    background: radial-gradient(circle, #35000d, #080808 75%);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+}
+
+.thank-you-content {
+    max-width: 700px;
+    animation: thankYouReveal 1.5s ease;
+}
+
+.thank-you-content h1 {
+    color: #ff3155;
+    font-size: clamp(30px, 7vw, 65px);
+    font-weight: 800;
+    text-shadow: 0 0 25px #ff174477;
+    margin-bottom: 20px;
+}
+
+.thank-you-content h2 {
+    color: white;
+    font-size: clamp(23px, 5vw, 40px);
+    line-height: 1.5;
+}
+
+.thank-you-content button {
+    margin-top: 45px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    background: #e50914;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+@keyframes thankYouReveal {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+    }

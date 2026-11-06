@@ -906,3 +906,60 @@ text-align: left !important;
 }
 
 }
+/* LOVEFLIX AUTOMATIC BACKGROUND SLIDESHOW */
+
+.netflix-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            to right,
+            rgba(0,0,0,.85),
+            rgba(0,0,0,.35)
+        ) !important;
+}
+
+.netflix-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    background-image: var(--hero-photo);
+    background-position: center 35%;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    opacity: 1;
+    transition: opacity 0.8s ease;
+}
+
+.netflix-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.85),
+            rgba(0,0,0,.35),
+            transparent
+        ),
+        linear-gradient(
+            0deg,
+            #080808,
+            transparent 65%
+        );
+    pointer-events: none;
+}
+
+.netflix-hero.is-fading::before {
+    opacity: 0;
+}
+
+.netflix-hero .hero-content {
+    position: relative;
+    z-index: 2;
+}

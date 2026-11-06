@@ -963,14 +963,15 @@ text-align: left !important;
     position: relative;
     z-index: 2;
 }
-/* ===== LOVEFLIX 3D BIRTHDAY CAKE ===== */
+
+/* ===== LOVEFLIX LUXURY 3D CAKE 2.0 ===== */
 
 #cakeModal {
     display: none;
     position: fixed;
     inset: 0;
     z-index: 2000;
-    background: radial-gradient(circle, #350811, #080808 75%);
+    background: radial-gradient(ellipse at center, #4b0716, #100207 65%, #000);
     align-items: center;
     justify-content: center;
     overflow-y: auto;
@@ -997,99 +998,149 @@ text-align: left !important;
 }
 
 .cake-popup p {
-    color: #fff;
+    color: white;
     margin: 10px;
 }
 
 .cake-stage {
     width: 100%;
-    height: 330px;
+    height: 370px;
     display: flex;
     align-items: center;
     justify-content: center;
-    perspective: 1000px;
+    perspective: 1100px;
     touch-action: pan-y;
 }
 
 #cake3d {
     width: 250px;
-    height: 250px;
+    height: 310px;
     position: relative;
     transform-style: preserve-3d;
     transform: rotateX(-12deg) rotateY(0deg);
     cursor: grab;
     transition: transform 0.15s ease;
+    filter: drop-shadow(0 25px 18px #0009);
 }
 
 #cake3d:active {
     cursor: grabbing;
 }
 
+/* THREE TALL CAKE TIERS */
+
+.cake-bottom,
+.cake-middle,
+.cake-top {
+    position: absolute;
+    border-radius: 50% / 16%;
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            transparent 65%,
+            #c6002b 66%,
+            #e50938 73%,
+            #c6002b 80%,
+            transparent 81%
+        ),
+        linear-gradient(
+            90deg,
+            #b50027 0%,
+            #f7dce0 12%,
+            #fff 28%,
+            #fff 68%,
+            #f4b8c3 87%,
+            #a80024 100%
+        );
+    box-shadow:
+        inset 0 -9px 12px #8e001d55,
+        inset 0 8px 10px #ffffffaa,
+        0 12px 18px #0008;
+}
+
 /* BOTTOM TIER */
 
 .cake-bottom {
-    position: absolute;
     width: 250px;
-    height: 75px;
+    height: 120px;
+    bottom: 0;
     left: 0;
-    bottom: 10px;
-    border-radius: 50% / 22%;
-    background: linear-gradient(
-        90deg,
-        #a90020,
-        #ff526d,
-        #fff0e9,
-        #ff526d,
-        #a90020
-    );
-    box-shadow: 0 12px 20px #0009;
+    z-index: 1;
 }
 
 /* MIDDLE TIER */
 
 .cake-middle {
-    position: absolute;
-    width: 195px;
-    height: 65px;
-    left: 27px;
-    bottom: 70px;
-    border-radius: 50% / 22%;
-    background: linear-gradient(
-        90deg,
-        #b60025,
-        #fff,
-        #ffb7c5,
-        #fff,
-        #b60025
-    );
-    box-shadow: 0 8px 15px #0008;
+    width: 190px;
+    height: 105px;
+    bottom: 100px;
+    left: 30px;
+    z-index: 2;
 }
 
 /* TOP TIER */
 
 .cake-top {
+    width: 130px;
+    height: 90px;
+    bottom: 190px;
+    left: 60px;
+    z-index: 3;
+}
+
+/* CREAM TOP SURFACE */
+
+.cake-bottom::before,
+.cake-middle::before,
+.cake-top::before {
+    content: "";
     position: absolute;
-    width: 135px;
-    height: 55px;
-    left: 57px;
-    bottom: 125px;
-    border-radius: 50% / 25%;
+    width: 100%;
+    height: 32%;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            ellipse,
+            #fff 45%,
+            #ffe9ed 75%,
+            #e8aab5 100%
+        );
+    box-shadow:
+        inset 0 4px 7px #fff,
+        0 4px 8px #8e001d55;
+}
+
+/* CREAM BORDER */
+
+.cake-bottom::after,
+.cake-middle::after,
+.cake-top::after {
+    content: "";
+    position: absolute;
+    left: 3%;
+    width: 94%;
+    height: 12px;
+    top: 25%;
+    border-radius: 50%;
     background: linear-gradient(
         90deg,
-        #a90020,
+        #a80024,
+        #ff526d,
         #fff,
-        #ffccd5,
-        #fff,
-        #a90020
+        #ff526d,
+        #a80024
     );
-    box-shadow: 0 5px 12px #0008;
+    box-shadow: 0 3px 5px #65001566;
 }
 
 /* CANDLE */
 
 .cake-candle {
     position: absolute;
-    width: 12px;
+    width: 13px;
     height: 48px;
     background: repeating-linear-gradient(
         45deg,
@@ -1098,28 +1149,29 @@ text-align: left !important;
         #e50914 5px,
         #e50914 10px
     );
-    left: 119px;
-    bottom: 177px;
+    left: 118px;
+    bottom: 270px;
     border-radius: 4px;
     z-index: 5;
+    box-shadow: 0 0 8px #fff8;
 }
 
 .flame {
     position: absolute;
-    width: 17px;
-    height: 25px;
+    width: 19px;
+    height: 27px;
     background: radial-gradient(
         ellipse,
-        #fff 5%,
+        white 5%,
         #ffdf00 35%,
         #ff6500 75%
     );
     border-radius: 50% 50% 50% 0;
     transform: rotate(-45deg);
     top: -25px;
-    left: -2px;
-    animation: candleFlame 0.5s infinite alternate;
-    box-shadow: 0 0 20px #ff8c00;
+    left: -3px;
+    animation: candleFlame .5s infinite alternate;
+    box-shadow: 0 0 22px #ff8c00;
 }
 
 @keyframes candleFlame {
@@ -1146,7 +1198,7 @@ text-align: left !important;
 
 @media(max-width:600px) {
     .cake-stage {
-        height: 290px;
+        height: 340px;
     }
 
     #cake3d {
@@ -1156,4 +1208,4 @@ text-align: left !important;
     .cake-popup {
         min-height: 85vh;
     }
-        }
+}

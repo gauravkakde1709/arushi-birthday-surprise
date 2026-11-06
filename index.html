@@ -523,11 +523,17 @@ function openCake() {
     document.body.style.overflow = "hidden";
 }
 
-function closeCake() {
+
+ function closeCake() {
     document.getElementById("cakeModal").style.display = "none";
-    document.body.style.overflow = "auto";
+    document.getElementById("thankYouScreen").style.display = "flex";
+    document.body.style.overflow = "hidden";
 }
 
+function closeThankYou() {
+    document.getElementById("thankYouScreen").style.display = "none";
+    document.body.style.overflow = "auto";
+}
 // 360 DEGREE CAKE ROTATION
 const cake3d = document.getElementById("cake3d");
 

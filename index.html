@@ -519,6 +519,42 @@ function createMemoryPosters() {
 }
 
 createMemoryPosters();
+ // LOVEFLIX HERO BACKGROUND SLIDESHOW
+const heroPhotos = [
+    "1793849030420.png",
+    "Screenshot_2026-11-05-08-31-08-33_1c337646f29875672b5a61192b9010f9.jpg",
+    "1793848011971.png",
+    "Screenshot_2026-11-05-08-30-05-50_1c337646f29875672b5a61192b9010f9.jpg",
+    "1793848016287.jpg",
+    "Screenshot_2026-11-05-08-29-35-06_1c337646f29875672b5a61192b9010f9.jpg"
+];
+
+const hero = document.querySelector(".netflix-hero");
+
+if (hero) {
+    let heroIndex = 0;
+
+    hero.style.setProperty(
+        "--hero-photo",
+        `url("${heroPhotos[heroIndex]}")`
+    );
+
+    setInterval(() => {
+        hero.classList.add("is-fading");
+
+        setTimeout(() => {
+            heroIndex = (heroIndex + 1) % heroPhotos.length;
+
+            hero.style.setProperty(
+                "--hero-photo",
+                `url("${heroPhotos[heroIndex]}")`
+            );
+
+            hero.classList.remove("is-fading");
+        }, 800);
+
+    }, 5000);
+ }
 </script>
  <link rel="stylesheet" href="style.css">
 </body>

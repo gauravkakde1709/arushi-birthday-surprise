@@ -451,12 +451,13 @@ function startMusic(){
  
 function checkPassword(){
  if(document.getElementById("password").value==="1709"){
+  pinAccepted=true;
   hideScreens();
-  document.getElementById("mainScreen").style.display="flex";
+  checkBirthday();
  }else{
   document.getElementById("error").innerText="Wrong PIN! Try again ❤️";
  }
- }
+}
 
 
 const unlockDate=new Date("2026-11-09T00:00:00+05:30").getTime();
@@ -464,9 +465,11 @@ const expiryDate=new Date("2026-11-10T00:00:00+05:30").getTime();
 
 function checkBirthday(){
  const now=Date.now();
+ hideScreens();
+
  if(now>=expiryDate){
-  document.getElementById("countdownScreen").style.display="flex";
   document.getElementById("countdownScreen").innerHTML="<h1>Our little surprise has ended ❤️</h1>";
+  document.getElementById("countdownScreen").style.display="flex";
  }else if(now>=unlockDate){
   document.getElementById("mainScreen").style.display="flex";
  }else{
@@ -474,7 +477,6 @@ function checkBirthday(){
   updateCountdown();
  }
 }
-
 function updateCountdown(){
  const now=Date.now();
  const distance=unlockDate-now;
@@ -486,8 +488,11 @@ function updateCountdown(){
  document.getElementById("countdown").innerText=
  days+" Days "+hours+" Hours "+minutes+" Minutes "+seconds+" Seconds";
 }
+
+ let pinAccepted=false;
+
 setInterval(()=>{
- if(Date.now()<unlockDate)updateCountdown();
+ if(pinAccepted) checkBirthday();
 },1000);
 
 function showEpisode(n){
